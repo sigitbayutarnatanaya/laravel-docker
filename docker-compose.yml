@@ -1,0 +1,46 @@
+services:
+    laravel:
+        container_name: laravel_web
+        build:
+            context: .
+            dockerfile: Dockerfile
+        environment:
+          - APP_ENV=${APP_ENV}
+          - APP_KEY=${APP_KEY}
+          - APP_DEBUG=${APP_DEBUG}
+          - APP_URL=${APP_URL}
+          - DB_CONNECTION=${DB_CONNECTION}
+          - DB_HOST=${DB_HOST}
+          - DB_PORT=${DB_PORT}
+          - DB_DATABASE=${DB_DATABASE}
+          - DB_USERNAME=${DB_USERNAME}
+          - DB_PASSWORD=${DB_PASSWORD}
+        working_dir: 
+            /var/www/html
+        volumes:
+            - ./:/var/www/html
+        ports:
+            - 9000:8080
+        depends_on:
+            - database
+        networks:
+            - laravel_net
+    database:
+        image: mariadb:latest
+        container_name: laravel_db
+        environment:
+            MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+            MYSQL_DATABASE: ${DB_DATABASE}
+            MYSQL_USER: ${DB_USERNAME}
+            MYSQL_PASSWORD: ${DB_PASSWORD}
+        volumes:
+            - mariadb_data:/var/lib/mysql
+        ports:
+            - 3306:3306
+        networks:
+            - laravel_net
+networks:
+  laravel_net:
+    driver: bridge
+volumes:
+  mariadb_data: ~
