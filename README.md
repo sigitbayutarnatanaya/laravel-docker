@@ -26,6 +26,7 @@ consideration deployment using this image :
 - welcome page on >> welcome.blade.php
 - modification file docker >> docker
 - backup database >> docker/config
+- this using fresh enviroment >> there's some code need to adjust (database connection & exposed port)
 # Command
 - Build and start all services
 docker-compose build 
