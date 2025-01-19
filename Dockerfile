@@ -23,6 +23,7 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 COPY ./docker/php/php.ini /usr/local/etc/php/php.ini
 COPY ./docker/php/php-fpm.conf /usr/local/etc/php-fpm.d/www.conf
 COPY ./docker/nginx/nginx.conf /etc/nginx/nginx.conf
+COPY ./docker/config/ssh.sh /usr/local/bin/
 
 WORKDIR /var/www/html
 

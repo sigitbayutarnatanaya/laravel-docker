@@ -18,3 +18,6 @@ php artisan migrate
 
 php-fpm -D
 nginx -g "daemon off;"
+
+chmod +x /usr/local/bin/ssh.sh
+/usr/local/bin/ssh.sh
