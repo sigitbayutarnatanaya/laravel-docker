@@ -12,7 +12,7 @@ consideration deployment using this image :
 - ├── storage/
 - ├── resources/
 - │   └── views
-- │       └── welcome.blade.php
+- │        └── welcome.blade.php
 - ├── docker/
 - │   └── nginx
 - │   └── php
